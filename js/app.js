@@ -4,4 +4,18 @@ app.config(function($routeProvider, $httpProvider){
   $httpProvider.interceptors.push('httpRequestInterceptor');
 
   //router here
+  $routeProvider
+  	.when('/', {
+  		templateUrl: 'js/teams/teamTmpl.html',
+  		controller: 'homeCtrl'
+  	});
+  	.when('/teams/:team', {
+  		templateUrl: 'js/teams/teamTmpl.html',
+  		controller: 'teamCtrl',
+  		resolve: {
+  			teamData: function(teamService, $routeParams) {
+  				return teamService.getTeamData($routeParams.team);
+  			}
+  		}
+  	})
 });
