@@ -15,7 +15,7 @@ app.service('teamService', function($http, $q){
 			//}
 
 			gameObject.won = gameObject.homeTeamScore > gameObject.opponentScore;
-			return http.post(url, gameObject); //this is a promise
+			return $http.post(url, gameObject); //this is a promise
 			},
 			getTeamData: function(teamName) {
 				var deferred = $q.defer();
